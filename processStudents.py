@@ -21,28 +21,32 @@ through the logic of the problem.
 
 
 import csv
+from email import header
+from unittest import skip
 
 
 # create a file object to open the file in read mode
-
+infile= open('students.csv', 'r')
 
 
 # create a csv object from the file object
-
+student_file =csv.reader({infile})
 
 #skip the header row
-
+next(student_file)
 
 #create an outfile object for the pocessed record
+outfile=open('processedStudents.csv', 'w')
 
 
 
 #create a new dictionary named 'student_dict'
-
+student_dict = {}
 
 
 #use a loop to iterate through each row of the file
-
+for row in infile:
+    infile.readline()
     #check if the GPA is below 3.0. If so, write the record to the outfile
     
         
