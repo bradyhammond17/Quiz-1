@@ -26,11 +26,11 @@ from unittest import skip
 
 
 # create a file object to open the file in read mode
-infile= open('students.csv', 'r')
+students= open('students.csv', 'r')
 
 
 # create a csv object from the file object
-student_file =csv.reader({infile})
+student_file =csv.reader(students, delimiter = ',')
 
 #skip the header row
 next(student_file)
@@ -45,34 +45,37 @@ student_dict = {}
 
 
 #use a loop to iterate through each row of the file
-for row in infile:
-    infile.readline()
-    #check if the GPA is below 3.0. If so, write the record to the outfile
+for row in student_file:
     
+    #check if the GPA is below 3.0. If so, write the record to the outfile
+    if float(row[8]) < 3:
+        outfile.write(str(row) + '\n')
         
 
 
 
     # append the record to the dictionary with the student id as the Key
     # and the value as the GPA
-    
+        student_dict[row[0]] = row[8]
 
 
 
 
 
 #print the entire dictionary
-
+print(student_dict)
 
 #Print the student id 
-
+for row in student_file:
+    print(student_dict[row[0]])
 
 #print out the corresponding GPA from the dictionary
-
+for row in student_file:
+    print(student_dict[row[8]])
 
 
 #close the outfile
-
+outfile.close()
 
 
 
